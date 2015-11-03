@@ -1,0 +1,16 @@
+*{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   	font-weight: 300;	
+   	color: white;
+}
+body{
+	background:url(../img/background.jpg);
+	background-size: cover;
+}
+h1{
+	font-size: 6em;
+}
+p{
+	font-size: 22px;
+
+}
