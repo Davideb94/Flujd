@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+		<!--<script src="socket.io.js"></script>-->
+		<!--<script src="client.js"></script>-->
+		<!--EXTERNAL SCRIPTS DOESN'T WORK 'CAUSE THE SERVER IS JUST SERVING ONE PAGE AND NOT THE ENTIRE FOLDER. SHOULD USE EXPRESS TO FIX THIS.-->
+		<script type="text/javascript">
+			var socket = io();
+			socket.on('wayon',function(data){	//Expects the event 'wayon' to be received from the server
+				window.location.reload();	//Refreshes the browser
+				socket.emit('wayback',{news: 'Changes has been detected.'});	//Throws back the answer to the server
+			});
+		</script>
+	</head>
+	<body>
+		
+		<p>Lorem ipsum</p>
+		
+	</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "live-dev",
+  "version": "1.0.0",
+  "description": "Providing live programming for a faster and more fluid developing.",
+  "main": "live-dev.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Davide Brunetti",
+  "license": "ISC"
+}
