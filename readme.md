@@ -1,5 +1,5 @@
 # Livedev
-Node app to watch over a folder and automatically load changes in the browser.
+Node app to watch over your working directory and automatically load changes in the browser.
 
 ##Usage:
 Launch it specifying the file to load and the port to use<br>
