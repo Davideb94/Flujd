@@ -1,11 +1,23 @@
 {
-  "name": "live-dev",
+  "name": "livedev",
   "version": "1.0.0",
-  "description": "Providing live programming for a faster and more fluid developing.",
-  "main": "live-dev.js",
+  "description": "Node app to watch over a folder and automatically load changes in the browser.",
+  "main": "livedev.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Davideb94/Livedev.git"
+  },
+  "keywords": [
+    "live programming",
+    "automatic browser refresh"
+  ],
   "author": "Davide Brunetti",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Davideb94/Livedev/issues"
+  },
+  "homepage": "https://github.com/Davideb94/Livedev#readme"
 }
