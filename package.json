@@ -19,6 +19,10 @@
   "bugs": {
     "url": "https://github.com/Davideb94/Livedev/issues"
   },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node livedev.js"
+  },
   "homepage": "https://github.com/Davideb94/Livedev#readme",
   "dependencies": {
     "express": "^4.13.3",
