@@ -17,6 +17,9 @@ var dt = new Date();
 app.get('/', function(req,res){
 	res.render('/' + toWatch + source);
 });
+app.get('/client.js', function(req,res){
+	res.sendFile(__dirname+'/client.js');
+});
 //--end
 
 io.on('connection',function(socket){	//Starts the watcher when the browser is launched. Allows to use the socket object.
