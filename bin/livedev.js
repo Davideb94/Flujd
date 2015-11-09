@@ -4,7 +4,6 @@ var source = ( process.argv[2] != undefined ) ? process.argv[2] : 'index.html',	
     port = (process.argv[3] != undefined) ? process.argv[3] : 8888;	//Defines which port to use. Default: 8888
 
 var toWatch = './';	//Defines which folder to watch.
-console.log(__dirname);
 var fs = require('fs');		//Includes File System to use fs.watch
 var express = require('express');	//Includes Express to start an express server
 var app = express();	//Creates an instance of express
