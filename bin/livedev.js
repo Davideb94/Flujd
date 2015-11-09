@@ -23,7 +23,9 @@ app.get('/client.js', function(req,res){
 
 io.on('connection',function(socket){	//Starts the watcher when the browser is launched. Allows to use the socket object.
 	fs.watch(toWatch, { recursive:true } ,function(){	//Watches over the folder specified in toWatch. When it catches changes...
-	 	socket.emit('wayon', {});	//...sends an empty object to the client
+	 	setTimeout(function(){	//Waiting for writing event to be completed
+  			socket.emit('wayon', {});	//...sends an empty object to the client
+		}, 500);
 	});
 	socket.on('wayback', function(data){	//Expects the answer from the client
 		printLog(data.news);
