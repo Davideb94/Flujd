@@ -31,7 +31,7 @@ io.on('connection',function(socket){	//Starts the watcher when the browser is la
 	 	socket.emit('wayon', {});	//...sends an empty object to the client
 	});
 	socket.on('wayback', function(data){	//Expects the answer from the client
-		console.log(data.news)
+		console.log(data.news + '    ' + data.date_time);
 	});
 });
 
