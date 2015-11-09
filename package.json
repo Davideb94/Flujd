@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/Davideb94/Livedev/issues"
   },
-  "homepage": "https://github.com/Davideb94/Livedev#readme"
+  "homepage": "https://github.com/Davideb94/Livedev#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "fs": "0.0.2",
+    "http": "0.0.0",
+    "open": "0.0.5",
+    "socket.io": "^1.3.7"
+  }
 }
