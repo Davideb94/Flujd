@@ -1,15 +1,7 @@
-//Defines which page to read. Default: index.html
-
-var source = ( process.argv[2]!= undefined ) ? process.argv[2] : 'index.html';
-//--end
+var source = ( process.argv[2] != undefined ) ? process.argv[2] : 'index.html',	//Defines which page to read. Default: index.html
+    port = (process.argv[3] != undefined) ? process.argv[3] : 8888;	//Defines which port to use. Default: 8888
 
 var toWatch = './';	//Defines which folder to watch.
-
-//Defines which port to use. Default: 8888
-var port = 8888;
-if(process.argv[3]!=null)
-	port = process.argv[3];
-//--end
 
 var fs = require('fs');		//Includes File System to use fs.watch
 var express = require('express');	//Includes Express to start an express server
