@@ -1,7 +1,6 @@
 //Defines which page to read. Default: index.html
-var source = 'index.html';
-if(process.argv[2]!=null)
-	source = process.argv[2];
+
+var source = ( process.argv[2]!= undefined ) ? process.argv[2] : 'index.html';
 //--end
 
 var toWatch = './';	//Defines which folder to watch.
