@@ -14,6 +14,10 @@ and it will automatically open a chrome window, load your home.html on the port 
 You can also just type inside your working directory  
 `$    livedev`  
 and it will look for an index.html and launch it on the port 8888.
+  
+To *smartly* exit the application, type  
+`quit`  
+at any time, and it will properly shut down Livedev.  
 
 ##Authors:
 Davide Brunetti  
