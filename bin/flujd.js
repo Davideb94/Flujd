@@ -64,7 +64,7 @@ function startServer () {
 }
 
 function showWelcome () {
-	console.log('\n----LIVE-DEV LAUNCHED----');
+	console.log('\n----FLUJD LAUNCHED----');
 	console.log("Listening on port: " + port + "\n");
 }
 

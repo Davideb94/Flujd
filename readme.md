@@ -1,4 +1,4 @@
-# Livedev
+# Flujd
 Node app to watch over your working directory and automatically load changes in the browser.
 
 ##Usage:
@@ -7,17 +7,17 @@ Now you can ~~download and~~ include in your project the file `client.js`:
 `<script src="client.js" type="text/javascript"></script>`  
 **note:** there's no need to download it, it's automatically retrieved from the package.  
 
-You're now ready to launch *livedev* specifying the file to load and the port to use  
-`$    livedev home.html 9090`  
+You're now ready to launch *flujd* specifying the file to load and the port to use  
+`$    flujd home.html 9090`  
 and it will automatically open a chrome window, load your home.html on the port 9090 and start waiting for changes in the current working directory.  
   
 You can also just type inside your working directory  
-`$    livedev`  
+`$    flujd`  
 and it will look for an index.html and launch it on the port 8888.
   
 To *smartly* exit the application, type  
 `q`  
-at any time, and it will properly shut down Livedev.  
+at any time, and it will properly shut down Flujd.  
 
 ##Authors:
 Davide Brunetti  
