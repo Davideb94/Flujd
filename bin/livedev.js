@@ -16,6 +16,7 @@ var dt = new Date();
 app.get('/', function(req,res){
 	res.render('/' + toWatch + source);
 });
+//TODO: MISSING CODE DOCUMENTATION
 app.get('/client.js', function(req,res){
 	res.sendFile(__dirname+'/client.js');
 });
@@ -39,7 +40,28 @@ console.log("Listening on port: " + port + "\n");
 
 open("http://localhost:"+port);	//Launches the browser
 
+//TODO: MISSING CODE DOCUMENTATION
 function printLog(logMessage){
 	var utcDate = dt.toUTCString();
 	console.log(utcDate+": "+logMessage);
 }
+
+//TODO: MISSING CODE DOCUMENTATION
+//TODO: DOCUMENT THE quit FUNCTION IN THE readme.md
+process.stdin.resume();
+process.stdin.setEncoding('utf8');
+var util = require('util');//TODO: INCLUDE util AS A DEPENDENCY IN THE package.json
+
+process.stdin.on('data', function (text) {
+  console.log('	');
+  if (text === 'quit\n') {
+    done();
+  }
+});
+
+//To smartly exit the application
+function done() {
+  console.log('See you soon:)');
+  process.exit();
+}
+//--end
