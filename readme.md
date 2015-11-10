@@ -16,7 +16,7 @@ You can also just type inside your working directory
 and it will look for an index.html and launch it on the port 8888.
   
 To *smartly* exit the application, type  
-`quit`  
+`q`  
 at any time, and it will properly shut down Livedev.  
 
 ##Authors:

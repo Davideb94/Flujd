@@ -47,22 +47,16 @@ function printLog(logMessage){
 }
 //--end
 
-process.stdin.resume();	//Starts reading from stdin
-process.stdin.setEncoding('utf8');
-var util = require('util');	//Includes util to parse user's input
+var stdin = process.stdin;
 
-//Defines how to respond to user's inputs
-process.stdin.on('data', function (text) {
-  if (text === 'quit\n')
-    done();
-  else
-  	console.log("WARNING: ", util.inspect(text), " is not a command!\n");
+stdin.setRawMode( true );	// without this, we would only get streams once enter is pressed
+
+stdin.resume();
+
+stdin.setEncoding( 'utf8' );	//otherwise it sets on binary
+
+stdin.on( 'data', function( key ){
+  if ( key === 'q'||key === '\u0003' ) { //if the user types 'q' or ctrl c it exits the app
+    process.exit();
+  }
 });
-//--end
-
-//To smartly exit the application
-function done() {
-  console.log('\nSee you soon:)');
-  process.exit();
-}
-//--end
