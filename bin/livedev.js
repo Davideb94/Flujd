@@ -53,15 +53,15 @@ process.stdin.setEncoding('utf8');
 var util = require('util');
 
 process.stdin.on('data', function (text) {
-  console.log('	');
-  if (text === 'quit\n') {
+  if (text === 'quit\n')
     done();
-  }
+  else
+  	console.log("WARNING: ", util.inspect(text), " is not a command!\n");
 });
 
 //To smartly exit the application
 function done() {
-  console.log('See you soon:)');
+  console.log('\nSee you soon:)');
   process.exit();
 }
 //--end
