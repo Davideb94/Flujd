@@ -12,12 +12,12 @@ var server = require('http').Server(app);	//Includes the http module and creates
 var io = require('socket.io')(server);	//Includes socket.io to communicate between the server and the browser
 var open = require('open');		//Includes node-open (https://github.com/pwnall/node-open) to automatically open a browser's window
 var dt = new Date();
+
 //Defines what to do when the port is pinged
 app.get('/', function(req,res){
 	res.render('/' + toWatch + source);
 });
-//TODO: MISSING CODE DOCUMENTATION
-app.get('/client.js', function(req,res){
+app.get('/client.js', function(req,res){	//Includes client.js in the files watched by the server 
 	res.sendFile(__dirname+'/client.js');
 });
 //--end
@@ -40,23 +40,25 @@ console.log("Listening on port: " + port + "\n");
 
 open("http://localhost:"+port);	//Launches the browser
 
-//TODO: MISSING CODE DOCUMENTATION
+//Defines printLog function to concatenate date and time to an output message
 function printLog(logMessage){
 	var utcDate = dt.toUTCString();
 	console.log(utcDate+": "+logMessage);
 }
+//--end
 
-//TODO: MISSING CODE DOCUMENTATION
-process.stdin.resume();
+process.stdin.resume();	//Starts reading from stdin
 process.stdin.setEncoding('utf8');
-var util = require('util');
+var util = require('util');	//Includes util to parse user's input
 
+//Defines how to respond to user's inputs
 process.stdin.on('data', function (text) {
   if (text === 'quit\n')
     done();
   else
   	console.log("WARNING: ", util.inspect(text), " is not a command!\n");
 });
+//--end
 
 //To smartly exit the application
 function done() {
