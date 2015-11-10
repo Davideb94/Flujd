@@ -47,7 +47,6 @@ function printLog(logMessage){
 }
 
 //TODO: MISSING CODE DOCUMENTATION
-//TODO: DOCUMENT THE quit FUNCTION IN THE readme.md
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
 var util = require('util');

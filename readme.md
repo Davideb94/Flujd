@@ -4,7 +4,7 @@ Node app to watch over your working directory and automatically load changes in 
 ##Usage:
 First have a beer, be sure it's a cold one.  
 Now you can ~~download and~~ include in your project the file `client.js`:  
-`<script src="client.js"></script>`  
+`<script src="client.js" type="text/javascript"></script>`  
 **note:** there's no need to download it, it's automatically retrieved from the package.  
 
 You're now ready to launch *livedev* specifying the file to load and the port to use  
