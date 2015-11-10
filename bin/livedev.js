@@ -14,8 +14,8 @@ var open = require('open');		//Includes node-open (https://github.com/pwnall/nod
 var dt = new Date();
 
 //Defines what to do when the port is pinged
-app.get('/', function(req,res){
-	res.render('/' + toWatch + source);
+app.get('/', function (req, res) {
+  res.redirect(source);
 });
 app.get('/client.js', function(req,res){	//Includes client.js in the files watched by the server 
 	res.sendFile(__dirname+'/client.js');
