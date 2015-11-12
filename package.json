@@ -29,9 +29,10 @@
     "fs": "0.0.2",
     "http": "0.0.0",
     "open": "0.0.5",
-    "socket.io": "^1.3.7"
+    "socket.io": "^1.3.7",
+    "colors": "2.14.7"
   },
   "bin": {
   "flujd": "bin/flujd.js"
-}
+  }
 }

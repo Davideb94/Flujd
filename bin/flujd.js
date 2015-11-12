@@ -27,12 +27,11 @@ var Flujd = {
 		this.open = require('open');		//Includes node-open (https://github.com/pwnall/node-open) to automatically open a browser's window
 		this.dt = new Date();
 		this.stdin = process.stdin;
+		this.colors = require('colors/safe');//To use colors in console.log
 	},
 
 	run: function(){
 		this.init();
-		console.log(this.source);
-		console.log(this.port);
 		this.controller.routing();
 		this.controller.prepareSocket();
 		this.controller.startServer();
@@ -43,8 +42,16 @@ var Flujd = {
 
 	interface:{
 		showWelcome: function () {
-			console.log('\n----FLUJD LAUNCHED----');
-			console.log("Listening on port: " + Flujd.port + "\n");
+			console.log(Flujd.colors.cyan('           _____ _       _     _'));
+			console.log(Flujd.colors.cyan('          |  ___| |     (_)   | |'));
+			console.log(Flujd.colors.cyan('          | |_  | |_   _ _  __| |'));
+			console.log(Flujd.colors.cyan('          |  _| | | | | | |/ _` |'));
+			console.log(Flujd.colors.cyan('          | |   | | |_| | | (_| |'));
+			console.log(Flujd.colors.cyan('          \\_|   |_|\\__,_| |\\__,_|'));
+			console.log(Flujd.colors.cyan('                       _/ |      '));
+			console.log(Flujd.colors.cyan('                      |__/       '));
+			
+			console.log(Flujd.colors.cyan('\n    Started and istening on port: ' + Flujd.port + '\n'));
 		},
 
 		openBrowser: function () {
@@ -52,7 +59,7 @@ var Flujd = {
 		},
 
 		printLog: function (logMessage){
-			var utcDate = dt.toUTCString();
+			var utcDate = Flujd.dt.toUTCString();
 			console.log(utcDate+": "+logMessage);
 		},
 
@@ -73,7 +80,7 @@ var Flujd = {
 		routing: function () {
 			//Defines what to do when the port is pinged
 			Flujd.app.get('/', function (req, res) {
-			  res.redirect(source);
+			  res.redirect(Flujd.source);
 			});
 			Flujd.app.get('/client.js', function (req,res){	//Includes client.js in the files watched by the server 
 				res.sendFile(__dirname+'/client.js');
@@ -89,7 +96,7 @@ var Flujd = {
 					}, 500);
 				});
 				socket.on('wayback', function(data){	//Expects the answer from the client
-					printLog(data.news);
+					Flujd.interface.printLog(data.news);
 				});
 			});
 		},
@@ -97,7 +104,6 @@ var Flujd = {
 		startServer: function () {
 			Flujd.server.listen(Flujd.port);	//Starts the server on the port specified in port
 		}
-
 	}
 }
 
