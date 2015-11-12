@@ -69,7 +69,7 @@ var Flujd = {
 			stdin.resume();
 			stdin.setEncoding( 'utf8' );	//otherwise it sets on binary
 			stdin.on( 'data', function( key ){
-			  if ( key === 'q'||key === '\u0003' ) { //if the user types 'q' or ctrl c it exits the app
+			  if ( key === 'q'|| key === 'Q'|| key === '\u0003' ) { //if the user types 'q' or ctrl c it exits the app
 			    process.exit();
 			  }
 			});
@@ -90,11 +90,7 @@ var Flujd = {
 
 		prepareSocket: function () {
 			Flujd.io.on('connection',function(socket){	//Starts the watcher when the browser is launched. Allows to use the socket object.
-				Flujd.fs.watch(Flujd.toWatch, { recursive:true } ,function(){	//Watches over the folder specified in toWatch. When it catches changes...
-					setTimeout(function(){	//Waiting for writing event to be completed
-				  		socket.emit('wayon', {});	//...sends an empty object to the client
-					}, 500);
-				});
+				Flujd.model.watch(socket);
 				socket.on('wayback', function(data){	//Expects the answer from the client
 					Flujd.interface.printLog(data.news);
 				});
@@ -103,6 +99,16 @@ var Flujd = {
 
 		startServer: function () {
 			Flujd.server.listen(Flujd.port);	//Starts the server on the port specified in port
+		}
+	},
+
+	model: {
+		watch: function (socket) {
+			Flujd.fs.watch(Flujd.toWatch, { recursive:true } ,function(){	//Watches over the folder specified in toWatch. When it catches changes...
+				setTimeout(function(){	//Waiting for writing event to be completed
+			  		socket.emit('wayon', {});	//...sends an empty object to the client
+				}, 500);
+			});
 		}
 	}
 }
