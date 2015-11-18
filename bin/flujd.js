@@ -36,15 +36,18 @@ var Flujd = {
 
 	run: function(){
 		this.init();
-		this.controller.startRouting();
-		this.controller.prepareSocket();
-		this.controller.startServer();
-		this.interface.showWelcome();
-		this.interface.openBrowser();
-		this.interface.prepareSmartExit();
+		Flujd.controller.init();
+		Flujd.interface.init();
 	},
 
 	interface:{
+
+		init: function () {
+			Flujd.interface.showWelcome();
+			Flujd.interface.openBrowser();
+			Flujd.interface.prepareSmartExit();
+		},
+
 		showWelcome: function () {
 			console.log(Flujd.colors.cyan('           _____ _       _     _'));
 			console.log(Flujd.colors.cyan('          |  ___| |     (_)   | |'));
@@ -81,6 +84,12 @@ var Flujd = {
 	},
 
 	controller:{
+		init: function() {
+			Flujd.controller.startRouting();
+			Flujd.controller.prepareSocket();
+			Flujd.controller.startServer();	
+		},
+
 		defineRoute: function(path,mode) {
 			Flujd.app.get(path, function (req,res) {
 				switch(mode){
