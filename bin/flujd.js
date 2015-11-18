@@ -62,7 +62,7 @@ var Flujd = {
 		},
 
 		openBrowser: function () {
-			Flujd.open("http://localhost:"+Flujd.port);	//Launches the browser
+			Flujd.open("http://localhost:"+Flujd.port+"/"+Flujd.source);	//Launches the browser
 		},
 
 		printLog: function (logMessage){
@@ -91,22 +91,13 @@ var Flujd = {
 		},
 
 		defineRoute: function(path,mode) {
-			Flujd.app.get(path, function (req,res) {
-				switch(mode){
-					case 'sendFile':
-						res.sendFile(__dirname+path);
-						break;
-					case 'redirect':
-					default:
-						res.redirect(Flujd.source);
-						break;
-				}
+			Flujd.app.get(path, function (req,res) {			
+				res.sendFile(__dirname+path);
 			});
 		},
 
 		startRouting: function () {
 			//Defines what to do when the port is pinged
-			Flujd.controller.defineRoute('/','redirect');
 			Flujd.controller.defineRoute('/client.js','sendFile');
 			//--end
 		},
