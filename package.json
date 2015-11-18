@@ -4,7 +4,8 @@
   "description": "Node app to watch over a folder and automatically load changes in the browser.",
   "main": "flujd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "bin/flujd.js"
   },
   "repository": {
     "type": "git",
@@ -19,20 +20,16 @@
   "bugs": {
     "url": "https://github.com/Davideb94/Flujd/issues"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bin/flujd.js"
-  },
   "homepage": "https://github.com/Davideb94/Flujd#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "express": "^4.13.3",
     "fs": "0.0.2",
     "http": "0.0.0",
     "open": "0.0.5",
-    "socket.io": "^1.3.7",
-    "colors": "2.14.7"
+    "socket.io": "^1.3.7"
   },
   "bin": {
-  "flujd": "bin/flujd.js"
+    "flujd": "bin/flujd.js"
   }
 }
