@@ -14,6 +14,10 @@ var Flujd = {
 	dt: null,
 	stdin: null,
 
+	truth: function(){
+		return true;
+	},
+
 	init: function () {
 		this.source = ( process.argv[2] != undefined ) ? process.argv[2] : 'index.html';	//Defines which page to read. Default: index.html
 		this.port = (process.argv[3] != undefined) ? process.argv[3] : 8888;	//Defines which port to use. Default: 8888
@@ -32,7 +36,7 @@ var Flujd = {
 
 	run: function(){
 		this.init();
-		this.controller.routing();
+		this.controller.startRouting();
 		this.controller.prepareSocket();
 		this.controller.startServer();
 		this.interface.showWelcome();
@@ -77,14 +81,24 @@ var Flujd = {
 	},
 
 	controller:{
-		routing: function () {
+		defineRoute: function(path,mode) {
+			Flujd.app.get(path, function (req,res) {
+				switch(mode){
+					case 'sendFile':
+						res.sendFile(__dirname+path);
+						break;
+					case 'redirect':
+					default:
+						res.redirect(Flujd.source);
+						break;
+				}
+			});
+		},
+
+		startRouting: function () {
 			//Defines what to do when the port is pinged
-			Flujd.app.get('/', function (req, res) {
-			  res.redirect(Flujd.source);
-			});
-			Flujd.app.get('/client.js', function (req,res){	//Includes client.js in the files watched by the server 
-				res.sendFile(__dirname+'/client.js');
-			});
+			Flujd.controller.defineRoute('/','redirect');
+			Flujd.controller.defineRoute('/client.js','sendFile');
 			//--end
 		},
 
