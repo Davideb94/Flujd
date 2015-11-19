@@ -54,14 +54,14 @@ var Flujd = {
 			Flujd.interface.prepareSmartExit();
 		},
 		showTitle: function(){
-			console.log(Flujd.colors.cyan('           _____ _       _     _'));
-			console.log(Flujd.colors.cyan('          |  ___| |     (_)   | |'));
-			console.log(Flujd.colors.cyan('          | |_  | |_   _ _  __| |'));
-			console.log(Flujd.colors.cyan('          |  _| | | | | | |/ _` |'));
-			console.log(Flujd.colors.cyan('          | |   | | |_| | | (_| |'));
-			console.log(Flujd.colors.cyan('          \\_|   |_|\\__,_| |\\__,_|'));
-			console.log(Flujd.colors.cyan('                       _/ |      '));
-			console.log(Flujd.colors.cyan('                      |__/       '));
+			Flujd.interface.printLog('           _____ _       _     _', 'highlight', false);
+			Flujd.interface.printLog('          |  ___| |     (_)   | |', 'highlight', false);
+			Flujd.interface.printLog('          | |_  | |_   _ _  __| |', 'highlight', false);
+			Flujd.interface.printLog('          |  _| | | | | | |/ _` |', 'highlight', false);
+			Flujd.interface.printLog('          | |   | | |_| | | (_| |', 'highlight', false);
+			Flujd.interface.printLog('          \\_|   |_|\\__,_| |\\__,_|', 'highlight', false);
+			Flujd.interface.printLog('                       _/ |      ', 'highlight', false);
+			Flujd.interface.printLog('                      |__/       ', 'highlight', false);
 			
 		},
 
@@ -105,6 +105,9 @@ var Flujd = {
 					break;
 				case 'warning':
 					coloredMessage = Flujd.interface.colorText(entireMessage,'yellow');
+					break;
+				case 'highlight':
+					coloredMessage = Flujd.interface.colorText(entireMessage,'cyan');
 					break;
 				default:
 					coloredMessage = entireMessage;
