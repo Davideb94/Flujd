@@ -13,14 +13,13 @@ var Flujd = {
 	open: null,
 	dt: null,
 	stdin: null,
-
-	truth: function(){
-		return true;
-	},
+	argv: null,
 
 	init: function () {
-		this.source = ( process.argv[2] != undefined ) ? process.argv[2] : 'index.html';	//Defines which page to read. Default: index.html
-		this.port = (process.argv[3] != undefined) ? process.argv[3] : 8888;	//Defines which port to use. Default: 8888
+		this.argv = require('minimist')(process.argv);
+		console.log(this.argv);
+		this.source = ( this.argv['source'] != undefined ) ? this.argv['source'] : 'index.html';	//Defines which page to read. Default: index.html
+		this.port = (this.argv['port'] != undefined) ? this.argv['port'] : 8888;	//Defines which port to use. Default: 8888
 		this.toWatch = './';	//Defines which folder to watch.
 		this.fs = require('fs');		//Includes File System to use fs.watch
 		this.express = require('express');	//Includes Express to start an express server
