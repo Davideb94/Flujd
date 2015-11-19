@@ -14,16 +14,18 @@ var Flujd = {
 	dt: null,
 	stdin: null,
 	argv: null,
+	fallbackSource: null,
 
 	init: function () {
 		this.dt = new Date();
 		this.colors = require('colors/safe');//To use colors in console.log
 		this.argv = require('minimist')(process.argv);
-		this.source = ( this.argv['source'] != undefined ) ? this.argv['source'] : 'index.html';	//Defines which page to read. Default: index.html
+		this.fallbackSource = ( this.argv['source'] == undefined ) ? true : false;
+		this.source = ( this.fallbackSource ) ? 'index.html' : this.argv['source'];	//Defines which page to read. Default: index.html
 		this.port = (this.argv['port'] != undefined) ? this.argv['port'] : 8888;	//Defines which port to use. Default: 8888
 		this.toWatch = './';	//Defines which folder to watch.
 		this.fs = require('fs');		//Includes File System to use fs.watch
-		this.express = require('expess');	//Includes Express to start an express server
+		this.express = require('express');	//Includes Express to start an express server
 		this.app = this.express();	//Creates an instance of express
 			this.app.use(this.express.static('.'));		//Selects the directory where the server has to watch
 		this.server = require('http').Server(this.app);	//Includes the http module and creates the server
@@ -63,8 +65,8 @@ var Flujd = {
 			console.log(Flujd.colors.cyan('                      |__/       '));
 			
 			console.log(Flujd.colors.cyan('\n    Started and istening on port: ' + Flujd.port + '\n'));
-			if( source == ''){
-				printLog('Didn\'t find --source parameter, falling back to index.html');
+			if( Flujd.fallbackSource ){
+				Flujd.interface.printLog('Didn\'t find --source parameter, falling back to index.html', 'warning');
 			}
 		},
 
@@ -126,8 +128,8 @@ var Flujd = {
 				Flujd.controller.prepareSocket();
 				Flujd.controller.startServer();	
 			}catch( err ){
-				printLog( 'Error initializing controllers:', 'error');
-				printLog( err, 'error');
+				Flujd.interface.printLog( 'Error initializing controllers:', 'error');
+				Flujd.interface.printLog( err, 'error');
 				process.exit();
 			}
 		},
