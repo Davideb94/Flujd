@@ -27,7 +27,7 @@ var Flujd = {
 		this.fs = require('fs');		//Includes File System to use fs.watch
 		this.express = require('express');	//Includes Express to start an express server
 		this.app = this.express();	//Creates an instance of express
-			this.app.use(this.express.static('.'));		//Selects the directory where the server has to watch
+		this.app.use(this.express.static('.'));		//Selects the directory where the server has to watch
 		this.server = require('http').Server(this.app);	//Includes the http module and creates the server
 		this.io = require('socket.io')(this.server);	//Includes socket.io to communicate between the server and the browser
 		this.open = require('open');		//Includes node-open (https://github.com/pwnall/node-open) to automatically open a browser's window
@@ -42,8 +42,22 @@ var Flujd = {
 			Flujd.interface.printLog(err, 'error');
 			process.exit();
 		}
-		Flujd.controller.init();
-		Flujd.interface.init();
+		try{
+			Flujd.controller.init();
+		}catch( err ){
+			Flujd.interface.printLog( 'Error initializing controllers:', 'error');
+			Flujd.interface.printLog( err, 'error');
+			process.exit();
+		}		
+		try{
+			Flujd.interface.init();
+		}catch( err ){
+			Flujd.interface.printLog( 'Error initializing interface:', 'error');
+			Flujd.interface.printLog( err, 'error');
+			process.exit();
+		}
+
+
 	},
 
 	interface:{
@@ -137,15 +151,9 @@ var Flujd = {
 
 	controller:{
 		init: function() {
-			try{
 				Flujd.controller.startRouting();
 				Flujd.controller.prepareSocket();
 				Flujd.controller.startServer();	
-			}catch( err ){
-				Flujd.interface.printLog( 'Error initializing controllers:', 'error');
-				Flujd.interface.printLog( err, 'error');
-				process.exit();
-			}
 		},
 
 		defineRoute: function(path,mode) {
