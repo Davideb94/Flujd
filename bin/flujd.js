@@ -73,7 +73,7 @@ var Flujd = {
 
 		showWelcome: function () {
 			Flujd.interface.showTitle();
-			console.log(Flujd.colors.cyan('\n    Started and istening on port: ' + Flujd.port + '\n'));
+			Flujd.interface.printLog('\n    Started and istening on port: ' + Flujd.port + '\n','highlight', false);
 			
 			if( Flujd.fallbackSource ){
 				Flujd.interface.printLog('Didn\'t find --source parameter, falling back to index.html', 'warning', false);
