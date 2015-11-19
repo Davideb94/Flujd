@@ -63,6 +63,9 @@ var Flujd = {
 			console.log(Flujd.colors.cyan('                      |__/       '));
 			
 			console.log(Flujd.colors.cyan('\n    Started and istening on port: ' + Flujd.port + '\n'));
+			if( source == ''){
+				printLog('Didn\'t find --source parameter, falling back to index.html');
+			}
 		},
 
 		openBrowser: function () {
@@ -118,9 +121,15 @@ var Flujd = {
 
 	controller:{
 		init: function() {
-			Flujd.controller.startRouting();
-			Flujd.controller.prepareSocket();
-			Flujd.controller.startServer();	
+			try{
+				Flujd.controller.startRouting();
+				Flujd.controller.prepareSocket();
+				Flujd.controller.startServer();	
+			}catch( err ){
+				printLog( 'Error initializing controllers:', 'error');
+				printLog( err, 'error');
+				process.exit();
+			}
 		},
 
 		defineRoute: function(path,mode) {
