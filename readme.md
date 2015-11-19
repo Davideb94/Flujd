@@ -8,7 +8,7 @@ Now you can ~~download and~~ include in your project the file `client.js`:
 **note:** there's no need to download it, it's automatically retrieved from the package.  
 
 You're now ready to launch *flujd* specifying the file to load and the port to use  
-`$    flujd home.html 9090`  
+`$    flujd --source home.html --port 9090`  
 and it will automatically open a chrome window, load your home.html on the port 9090 and start waiting for changes in the current working directory.  
   
 You can also just type inside your working directory  

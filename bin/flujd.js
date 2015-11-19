@@ -38,23 +38,17 @@ var Flujd = {
 		try{
 			this.init();
 		}catch(err){
-			Flujd.interface.printLog('Error initializing modules:','error');
-			Flujd.interface.printLog(err, 'error');
-			process.exit();
+			Flujd.interface.handleError('Error initializing modules:','error', err);
 		}
 		try{
 			Flujd.controller.init();
 		}catch( err ){
-			Flujd.interface.printLog( 'Error initializing controllers:', 'error');
-			Flujd.interface.printLog( err, 'error');
-			process.exit();
+			Flujd.interface.handleError( 'Error initializing controllers:', 'error', err);
 		}		
 		try{
 			Flujd.interface.init();
 		}catch( err ){
-			Flujd.interface.printLog( 'Error initializing interface:', 'error');
-			Flujd.interface.printLog( err, 'error');
-			process.exit();
+			Flujd.interface.handleError( 'Error initializing interface:', 'error', err);
 		}
 
 
@@ -67,6 +61,13 @@ var Flujd = {
 			Flujd.interface.openBrowser();
 			Flujd.interface.prepareSmartExit();
 		},
+
+		handleError: function (text,mode,err) {
+			Flujd.interface.printLog( text, mode);
+			Flujd.interface.printLog( err, mode);
+			process.exit();
+		},
+
 		showTitle: function(){
 			var title = new Array(
 					'           _____ _       _     _',
@@ -90,7 +91,7 @@ var Flujd = {
 			Flujd.interface.printLog('\n    Started and istening on port: ' + Flujd.port + '\n','highlight', false);
 			
 			if( Flujd.fallbackSource ){
-				Flujd.interface.printLog('Didn\'t find --source parameter, falling back to index.html', 'warning', false);
+				Flujd.interface.printLog('Couldn\'t find --source parameter, falling back to index.html\n', 'warning', false);
 			}
 		},
 
