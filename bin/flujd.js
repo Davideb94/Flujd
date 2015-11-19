@@ -53,8 +53,7 @@ var Flujd = {
 			Flujd.interface.openBrowser();
 			Flujd.interface.prepareSmartExit();
 		},
-
-		showWelcome: function () {
+		showTitle: function(){
 			console.log(Flujd.colors.cyan('           _____ _       _     _'));
 			console.log(Flujd.colors.cyan('          |  ___| |     (_)   | |'));
 			console.log(Flujd.colors.cyan('          | |_  | |_   _ _  __| |'));
@@ -64,9 +63,14 @@ var Flujd = {
 			console.log(Flujd.colors.cyan('                       _/ |      '));
 			console.log(Flujd.colors.cyan('                      |__/       '));
 			
+		},
+
+		showWelcome: function () {
+			Flujd.interface.showTitle();
 			console.log(Flujd.colors.cyan('\n    Started and istening on port: ' + Flujd.port + '\n'));
+			
 			if( Flujd.fallbackSource ){
-				Flujd.interface.printLog('Didn\'t find --source parameter, falling back to index.html', 'warning');
+				Flujd.interface.printLog('Didn\'t find --source parameter, falling back to index.html', 'warning', false);
 			}
 		},
 
@@ -90,9 +94,10 @@ var Flujd = {
 			}
 		},
 
-		printLog: function (logMessage,logType){
+		printLog: function (logMessage,logType,insertDate){
 			var utcDate = Flujd.dt.toUTCString();
-			var entireMessage = utcDate+": "+logMessage;
+			insertDate = ( insertDate == undefined || insertDate == true ) ? true : false;		
+			var entireMessage = ( insertDate ) ? utcDate+": "+logMessage : logMessage;
 			var coloredMessage;
 			switch(logType){
 				case 'error':
