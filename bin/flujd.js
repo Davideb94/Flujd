@@ -54,14 +54,20 @@ var Flujd = {
 			Flujd.interface.prepareSmartExit();
 		},
 		showTitle: function(){
-			Flujd.interface.printLog('           _____ _       _     _', 'highlight', false);
-			Flujd.interface.printLog('          |  ___| |     (_)   | |', 'highlight', false);
-			Flujd.interface.printLog('          | |_  | |_   _ _  __| |', 'highlight', false);
-			Flujd.interface.printLog('          |  _| | | | | | |/ _` |', 'highlight', false);
-			Flujd.interface.printLog('          | |   | | |_| | | (_| |', 'highlight', false);
-			Flujd.interface.printLog('          \\_|   |_|\\__,_| |\\__,_|', 'highlight', false);
-			Flujd.interface.printLog('                       _/ |      ', 'highlight', false);
-			Flujd.interface.printLog('                      |__/       ', 'highlight', false);
+			var title = new Array(
+					'           _____ _       _     _',
+					'          |  ___| |     (_)   | |',
+					'          | |_  | |_   _ _  __| |',
+					'          |  _| | | | | | |/ _` |',
+					'          | |   | | |_| | | (_| |',
+					'          \\_|   |_|\\__,_| |\\__,_|',
+					'                       _/ |      ',
+					'                      |__/       '
+				);
+
+			title.forEach(function(line){
+				Flujd.interface.printLog(line, 'highlight', false);
+			});
 			
 		},
 
