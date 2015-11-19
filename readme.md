@@ -32,3 +32,5 @@ davide.brunetti@edu.unito.it
 [open](https://github.com/pwnall/node-open)  
 [express](http://expressjs.com/)  
 [socket.io](http://socket.io/)
+[colors](https://github.com/Marak/colors.js)
+[minimist](https://github.com/substack/minimist)
