@@ -173,7 +173,8 @@ var Flujd = {
 			Flujd.io.on('connection',function(socket){	//Starts the watcher when the browser is launched. Allows to use the socket object.
 				Flujd.model.watch(socket);
 				socket.on('wayback', function(data){	//Expects the answer from the client
-					Flujd.interface.printLog(data.news);
+					var socketNumber = Flujd.io.sockets.sockets.length;
+					Flujd.interface.printLog(data.news + 'on socket ' + socketNumber);
 				});
 			});
 		},

@@ -8,7 +8,7 @@ var dateToString;
 
 socket.on("wayon",function(t){
 	dateToString = myDate.getHours() + ':' + myDate.getMinutes() + ':' + myDate.getSeconds() + '    ' + myDate.getDate() + '/' + myDate.getMonth() + '/' + myDate.getFullYear();
-	socket.emit("wayback",{news:"Changes have been loaded.", date_time: dateToString});
+	socket.emit("wayback",{news:"Changes have been loaded ", date_time: dateToString});
 	window.location.reload();
 });
 
