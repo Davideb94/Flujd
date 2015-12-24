@@ -5,8 +5,10 @@ n==P&&U(),P=n}return+i.slice(e,P)}if(r&&U(),"true"==i.slice(P,P+4))return P+=4,!
 var socket=io.connect();
 var myDate = new Date();
 var dateToString;
+
 socket.on("wayon",function(t){
-	window.location.reload();
 	dateToString = myDate.getHours() + ':' + myDate.getMinutes() + ':' + myDate.getSeconds() + '    ' + myDate.getDate() + '/' + myDate.getMonth() + '/' + myDate.getFullYear();
-	socket.emit("wayback",{news:"Changes has been loaded.", date_time: dateToString})
+	socket.emit("wayback",{news:"Changes have been loaded.", date_time: dateToString});
+	window.location.reload();
 });
+
