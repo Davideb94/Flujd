@@ -196,3 +196,11 @@ var Flujd = {
 }
 
 Flujd.run();
+
+exports.showWelcome = Flujd.interface.showWelcome;
+exports.openBrowser = Flujd.interface.openBrowser;
+exports.prepareSmartExit = Flujd.interface.prepareSmartExit;
+
+exports.startRouting = Flujd.controller.startRouting;
+exports.prepareSocket = Flujd.controller.prepareSocket;
+exports.startServer = Flujd.controller.startServer;	
