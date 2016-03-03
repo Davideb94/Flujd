@@ -1,6 +1,10 @@
 # Flujd
 Node app to watch over your working directory and automatically load changes in the browser.
 
+##Download:
+It's an npm package, so just type:
+`$    npm install flujd -g`
+
 ##Usage:
 First have a beer, be sure it's a cold one.  
 Now you can ~~download and~~ include in your project the file `client.js`:  
