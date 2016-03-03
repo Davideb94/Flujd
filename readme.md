@@ -2,7 +2,7 @@
 Node app to watch over your working directory and automatically load changes in the browser.
 
 ##Download:
-It's an npm package, so just type:
+It's an npm package, so just type:  
 `$    npm install flujd -g`
 
 ##Usage:
